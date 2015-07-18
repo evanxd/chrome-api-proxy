@@ -1,0 +1,14 @@
+{
+  "name": "chrome-api-proxy",
+  "version": "0.0.1",
+  "homepage": "https://github.com/evanxd/chrome-api-proxy",
+  "authors": [
+    "Evan Tseng <evan@tseng.io>"
+  ],
+  "description": "Call Chrome App APIs from a Webpage.",
+  "keywords": [
+    "chrome",
+    "serial"
+  ],
+  "license": "Apache License 2.0"
+}
