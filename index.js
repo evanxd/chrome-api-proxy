@@ -4,14 +4,6 @@
   function ChromeApiProxy(extensionId) {
     this._events = new Map();
     this._port = chrome.runtime.connect(extensionId);
-    this._port.onMessage.addListener(function(message) {
-      if (message.callId) {
-        return;
-      }
-      var events = this._events;
-      var event = message.event;
-      events.has(event) && events.get(event)(message.data);
-    }.bind(this));
   }
 
   ChromeApiProxy.prototype = {
@@ -38,8 +30,10 @@
       });
     },
 
-    listen: function(event, callback) {
-      this._events.set(event, callback);
+    listenSerialPort: function(callback) {
+      callback && this._port.onMessage.addListener(function(message) {
+        message.type === 'serial' && callback(message.info);
+      });
     },
 
     _uuid: function() {

@@ -6,7 +6,7 @@ chrome.runtime.onConnectExternal.addListener(function(port) {
 
   // Send serialport data to the Webpage.
   chrome.serial.onReceive.addListener(function(info) {
-    port.postMessage({ info: info });
+    port.postMessage({ type: 'serial', info: info });
   });
 
   port.onMessage.addListener(function(message) {

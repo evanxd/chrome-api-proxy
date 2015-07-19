@@ -19,10 +19,9 @@ proxy.call('chrome.serial.getDevices')
 })
 .then(function(info) {
   var connectionId = info.connectionId;
-  var flag = false;
-  setInterval(function(){
-    flag = !flag;
-    var data = [144, 0, flag ? 1 : 0];
-    proxy.call('chrome.serial.send', connectionId, data);
-  }, 100);
+  // Check Arduino board is ready.
+  proxy.listenSerialPort(function(info) {
+    info.connectionId === connectionId &&
+      proxy.call('chrome.serial.send', connectionId, [144, 0, 1]);
+  });
 });
