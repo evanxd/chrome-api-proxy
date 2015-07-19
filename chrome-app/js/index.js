@@ -4,6 +4,11 @@ chrome.runtime.onConnectExternal.addListener(function(port) {
   var state = document.querySelector('#state');
   state.innerHTML = 'Connected';
 
+  // Send serialport data to the Webpage.
+  chrome.serial.onReceive.addListener(function(info) {
+    port.postMessage({ info: info });
+  });
+
   port.onMessage.addListener(function(message) {
     var callId = message.callId;
     var params = message.params;
