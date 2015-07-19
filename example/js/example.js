@@ -4,11 +4,24 @@
 var extensionId = 'dacgaojeadgpmpmbfoibmncggacokdjd';
 var proxy = new ChromeApiProxy(extensionId);
 
-proxy.call('chrome.serial.getDevices').then(function(devices) {
-  var message = '<ul>';
+proxy.call('chrome.serial.getDevices')
+.then(function(devices) {
+  var path;
   devices.forEach(function(device) {
-    message += ('<li>' + device.path + '</li>');
+    if (device.path.match('cu.usbmodem')) {
+      path = device.path;
+    }
   });
-  message += '</ul>';
-  document.querySelector('#message').innerHTML = message;
+  var options = {
+    bitrate: 57600,
+  };
+  return proxy.call('chrome.serial.connect', path, options);
+})
+.then(function(info) {
+  var connectionId = info.connectionId;
+  var data = [144, 0, 1];
+  // Workaround to wait for board is ready.
+  setTimeout(function() {
+    proxy.call('chrome.serial.send', connectionId, data);
+  }, 2000);
 });
