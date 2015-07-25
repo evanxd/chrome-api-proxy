@@ -12,7 +12,6 @@ chrome.app.runtime.onLaunched.addListener(function() {
       maxHeight: APP_HEIGHT,
       minWidth: APP_WIDTH,
       minHeight: APP_HEIGHT
-    },
-    alwaysOnTop: true
+    }
   });
 });
