@@ -6,6 +6,7 @@ chrome.runtime.onConnectExternal.addListener(function(port) {
 
   // Send serialport data to the Webpage.
   chrome.serial.onReceive.addListener(function(info) {
+    info.data = toHexString(info.data);
     port.postMessage({ type: 'serial', info: info });
   });
 
@@ -29,4 +30,17 @@ chrome.runtime.onConnectExternal.addListener(function(port) {
     });
     call instanceof Function && call.apply(null, params);
   });
+
+  function toHexString(arrayBuffer) {
+    var string = '';
+    var uint8Array = new Uint8Array(arrayBuffer);
+    for (var i = 0; i < uint8Array.length; i++) {
+      var hex = uint8Array[i].toString(16);
+      if (hex.length == 1) {
+        string += '0';
+      }
+      string += hex;
+    }
+    return string;
+  }
 });
