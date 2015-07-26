@@ -1,6 +1,6 @@
 {
   "name": "chrome-app-api-proxy",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/evanxd/chrome-api-proxy",
   "authors": [
     "Evan Tseng <evan@tseng.io>"
