@@ -11,6 +11,15 @@
   "externally_connectable": {
     "matches": ["http://wotjs.io/*", "http://localhost:8080/*"]
   },
+  "url_handlers": {
+    "start_app": {
+      "title": "Start Chrome API Proxy App",
+      "matches": [
+        "http://wotjs.io/maker/start-app.html",
+        "http://localhost:8080/start-app.html"
+      ]
+    }
+  },
   "permissions": [
     "alwaysOnTopWindows",
     "serial"
