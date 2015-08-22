@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Chrome API Proxy",
   "description": "Call Chrome App APIs from a Webpage.",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "app": {
     "background": {
       "scripts": ["background.js"]
@@ -15,8 +15,8 @@
     "start_app": {
       "title": "Start Chrome API Proxy App",
       "matches": [
-        "http://wotjs.io/maker/start-app.html",
-        "http://localhost:8080/start-app.html"
+        "http://wotjs.io/maker/setup.html",
+        "http://localhost:8080/setup.html"
       ]
     }
   },
