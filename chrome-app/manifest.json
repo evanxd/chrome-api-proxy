@@ -9,12 +9,17 @@
     }
   },
   "externally_connectable": {
-    "matches": ["http://wotjs.io/*", "http://localhost:8080/*"]
+    "matches": [
+      "http://wotmaker.io/*",
+      "http://wotjs.io/*",
+      "http://localhost:8080/*"
+    ]
   },
   "url_handlers": {
     "start_app": {
       "title": "Start Chrome API Proxy App",
       "matches": [
+        "http://wotmaker.io/setup.html",
         "http://wotjs.io/maker/setup.html",
         "http://localhost:8080/setup.html"
       ]
